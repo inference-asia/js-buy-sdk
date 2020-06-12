@@ -6,7 +6,9 @@ export default function handleCustomerMutation(mutationRootKey/* , client*/) {
     if (userErrors.length) {
       return Promise.reject(new Error(JSON.stringify(userErrors)));
     }
-    delete rootData.userErrors;
+
+    if (rootData)
+      delete rootData.userErrors;
 
     return Promise.resolve(rootData);
   };
